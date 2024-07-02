@@ -2,7 +2,7 @@ package actions
 
 import (
 	"errors"
-    "time"
+
 	"github.com/containrrr/watchtower/internal/util"
 	"github.com/containrrr/watchtower/pkg/container"
 	"github.com/containrrr/watchtower/pkg/lifecycle"
