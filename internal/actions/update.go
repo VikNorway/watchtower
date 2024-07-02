@@ -112,8 +112,6 @@ func performRollingRestart(containers []types.Container, client container.Client
 				}
 			}
 		}
-		log.Info("Waiting a little...")
-		time.Sleep(30 * time.Second)
 	}
 
 	if params.Cleanup {

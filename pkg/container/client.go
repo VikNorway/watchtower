@@ -270,6 +270,8 @@ func (client dockerClient) StartContainer(c t.Container) (t.ContainerID, error) 
 	createdContainer, err := client.api.ContainerCreate(bg, config, hostConfig, simpleNetworkConfig, nil, name)
 	if err != nil {
 		return "", err
+		log.Info("Waiting a little before start next...")
+		time.Sleep(90 * time.Second)
 	}
 
 	if !(hostConfig.NetworkMode.IsHost()) {
