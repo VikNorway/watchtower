@@ -2,7 +2,7 @@ package actions
 
 import (
 	"errors"
-
+    "time"
 	"github.com/containrrr/watchtower/internal/util"
 	"github.com/containrrr/watchtower/pkg/container"
 	"github.com/containrrr/watchtower/pkg/lifecycle"
@@ -112,6 +112,7 @@ func performRollingRestart(containers []types.Container, client container.Client
 				}
 			}
 		}
+		time.Sleep(90 * time.Second)
 	}
 
 	if params.Cleanup {
