@@ -193,6 +193,8 @@ func (client dockerClient) StopContainer(c t.Container, timeout time.Duration) e
 
 	if c.IsRunning() {
 		log.Infof("Stopping %s (%s) with %s", c.Name(), shortID, signal)
+		log.Info("Waiting a little...")
+		time.Sleep(90 * time.Second)
 		if err := client.api.ContainerKill(bg, idStr, signal); err != nil {
 			return err
 		}
@@ -270,8 +272,6 @@ func (client dockerClient) StartContainer(c t.Container) (t.ContainerID, error) 
 	createdContainer, err := client.api.ContainerCreate(bg, config, hostConfig, simpleNetworkConfig, nil, name)
 	if err != nil {
 		return "", err
-		log.Info("Waiting a little before start next...")
-		time.Sleep(90 * time.Second)
 	}
 
 	if !(hostConfig.NetworkMode.IsHost()) {
