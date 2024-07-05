@@ -194,7 +194,7 @@ func (client dockerClient) StopContainer(c t.Container, timeout time.Duration) e
 	if c.IsRunning() {
 		log.Infof("Stopping %s (%s) with %s", c.Name(), shortID, signal)
 		log.Info("Waiting a little...")
-		time.Sleep(60 * time.Second)
+		time.Sleep(30 * time.Second)
 		if err := client.api.ContainerKill(bg, idStr, signal); err != nil {
 			return err
 		}
